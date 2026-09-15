@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-dataset = r"C:\Users\manut\OneDrive\Desktop\exercicio-pandas\dataset_falhas_maquinas.xlsx"
+dataset = r"C:\Users\labsfiap\Desktop\exercicio-pandas\dataset_falhas_maquinas.xlsx"
 df = pd.read_excel(dataset)
 
 #1. Crie um filtro para selecionar apenas as máquinas do tipo M, depois do tipo H, depois do tipo L.
@@ -21,18 +21,15 @@ print(pf_df)
 
 #4. Qual a faixa de valores de temperatura do processo, torque e velocidade de rotação quando há apenas falhas do tipo power failure?
 
-temp_min = pf_df['Temperatura Processo [K]'].min()
-temp_max = pf_df['Temperatura Processo [K]'].max()
+def faixa(a,b):
+    minimo = (a[b].min())
+    maximo = (a[b].max())
+    return f'{b}: de {minimo} a {maximo}'
 
-torq_min = pf_df['Torque [Nm]'].min()
-torq_max = pf_df['Torque [Nm]'].max()
 
-vr_min = pf_df['Velocidade Rotacao [rpm]'].min()
-vr_max = pf_df['Velocidade Rotacao [rpm]'].max()
-
-print(f'Temperatura Processo [K] (Power Failure): de {temp_min} a {temp_max}')
-print(f'Torque [Nm] (Power Failure): de {torq_min} a {torq_max}')
-print(f'Velocidade Rotacao [rpm] (Power Failure): de {vr_min} a {vr_max}')
+print(faixa(pf_df, 'Temperatura Processo [K]'))
+print(faixa(pf_df, 'Torque [Nm]'))
+print(faixa(pf_df, 'Velocidade Rotacao [rpm]'))
 
 #5. Se existem diferentes máquinas quando há falhas do tipo power failure, será que é correto verificar a faixa de valores de temperatura do processo, torque e velocidade de rotação sem separar o tipo de máquina?
 #6. Mostre a curva de velocidade de rotação quando houver apenas falhas do tipo power failure.

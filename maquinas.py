@@ -20,6 +20,20 @@ pf_df = df[pf_filter]
 print(pf_df)
 
 #4. Qual a faixa de valores de temperatura do processo, torque e velocidade de rotação quando há apenas falhas do tipo power failure?
+
+temp_min = pf_df['Temperatura Processo [K]'].min()
+temp_max = pf_df['Temperatura Processo [K]'].max()
+
+torq_min = pf_df['Torque [Nm]'].min()
+torq_max = pf_df['Torque [Nm]'].max()
+
+vr_min = pf_df['Velocidade Rotacao [rpm]'].min()
+vr_max = pf_df['Velocidade Rotacao [rpm]'].max()
+
+print(f'Temperatura Processo [K] (Power Failure): de {temp_min} a {temp_max}')
+print(f'Torque [Nm] (Power Failure): de {torq_min} a {torq_max}')
+print(f'Velocidade Rotacao [rpm] (Power Failure): de {vr_min} a {vr_max}')
+
 #5. Se existem diferentes máquinas quando há falhas do tipo power failure, será que é correto verificar a faixa de valores de temperatura do processo, torque e velocidade de rotação sem separar o tipo de máquina?
 #6. Mostre a curva de velocidade de rotação quando houver apenas falhas do tipo power failure.
 #7. Mostre a curva de velocidade de rotação quando houver apenas falhas do tipo power failure, considerando o tipo de máquina.
